@@ -1,0 +1,6 @@
+[submodule "serde_json_demo"]
+	path = serde_json_demo
+	url = ./serde_json_demo/
+[submodule "vec_demo"]
+	path = vec_demo
+	url = ./vec_demo/

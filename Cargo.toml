@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "serde_json_demo",
+    "vec_demo"
+]
