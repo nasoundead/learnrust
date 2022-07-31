@@ -1,5 +1,8 @@
 [workspace]
 members = [
     "serde_json_demo",
-    "vec_demo"
+    "vec_demo",
+    "ref_borrow_demo",
+    "iterator_demo",
+    "mem_demo"
 ]
