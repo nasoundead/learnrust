@@ -4,5 +4,7 @@ members = [
     "vec_demo",
     "ref_borrow_demo",
     "iterator_demo",
-    "mem_demo"
+    "mem_demo",
+    "tcpserver",
+    "tcpclient",
 ]
