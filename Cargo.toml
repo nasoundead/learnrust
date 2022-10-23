@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "guess",
     "serde_json_demo",
     "vec_demo",
     "ref_borrow_demo",
@@ -7,4 +8,5 @@ members = [
     "mem_demo",
     "tcpserver",
     "tcpclient",
+    "the_algorithms",
 ]

@@ -90,13 +90,4 @@ mod tests {
         let c: Vec<i32> = a.iter().cloned().chain(b.iter().cloned()).collect(); // Cloned
         assert_eq!(c, [1, 2, 3, 4, 5, 6]);
     }
-
-    #[test]
-    fn test_chain_copied() {
-        let a = vec![1, 2, 3];
-        let b = vec![4, 5, 6];
-
-        let c: Vec<i32> = a.iter().copied().chain(b.iter().copied()).collect(); // Copied
-        assert_eq!(c, [1, 2, 3, 4, 5, 6]);
-    }
 }
