@@ -6,7 +6,7 @@ use std::cmp::Ordering;
 fn main() {
     // 产生神秘数字
     let secret_num = rand::thread_rng().gen_range(1, 101);
-    // println!("secret num: {}", secret_num);
+    println!("secret num: {}", secret_num);
 
     loop {
         println!("input you guess:");
@@ -17,7 +17,7 @@ fn main() {
             Err(_) => continue,
         };
         println!("your guess num is: {}", guess);
-    
+
         match guess.cmp(&secret_num) {
             Ordering::Less => println!("too small"),
             Ordering::Greater => println!("too large"),
@@ -27,5 +27,5 @@ fn main() {
             },
         }
     }
-    
+
 }

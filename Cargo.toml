@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "for-loop",
     "guess",
     "serde_json_demo",
     "vec_demo",
@@ -9,4 +10,5 @@ members = [
     "tcpserver",
     "tcpclient",
     "the_algorithms",
+    "args_parse",
 ]
