@@ -51,6 +51,7 @@ $RECYCLE.BIN/
 *.msix
 *.msm
 *.msp
+.chat
 
 # Windows shortcuts
 *.lnk

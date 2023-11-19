@@ -54,7 +54,7 @@ mod tests {
         let y = vec![6, 7, 8, 9, 10].into_iter();
 
         let z: Vec<u64> = x.chain(y).collect();
-        assert_eq!(z.len(),10);
+        assert_eq!(z, &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     }
 
 }

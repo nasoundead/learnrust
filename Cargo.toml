@@ -9,6 +9,8 @@ members = [
     "mem_demo",
     "tcpserver",
     "tcpclient",
+    "network",
     "the_algorithms",
     "args_parse",
+    "read",
 ]
