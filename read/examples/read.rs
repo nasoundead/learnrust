@@ -1,6 +1,6 @@
+use std::fs::File;
 use std::io;
 use std::io::prelude::*;
-use std::fs::File;
 
 fn main() -> io::Result<()> {
     let mut f: File = File::open("foo.txt")?;
@@ -8,19 +8,18 @@ fn main() -> io::Result<()> {
 
     // read up to 10 bytes
     loop {
-        let size = f.read(&mut buffer)?;
-        println!("{:?}, size:{}",buffer, size);
-        if size < 10 {
-            for i in size..10 {
-                print!("{}",i);
-                buffer[i] = 0;
-            }
-            
-            break;
-        }
+	let size = f.read(&mut buffer)?;
+	println!("{:?}, size:{}", buffer, size);
+	if size < 10 {
+	    for i in size..10 {
+		print!("{i}");
+		// buffer[i] = 0;
+	    }
+	    break;
+	}
     }
-    
 
+    println!("{:?}", buffer);
     // let mut buffer: Vec<u8> = Vec::new();
     // // read the whole file
     // f.read_to_end(&mut buffer)?;
