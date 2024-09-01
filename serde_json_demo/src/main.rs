@@ -38,24 +38,24 @@ mod tests {
 
     #[test]
     fn constructing_json_values() {
-        let full_name = "John Doe";
-        let age_last_year = 42;
-        // The type of `john` is `serde_json::Value`
-        let john = json!(
-            {
-                "name": full_name,
-                "age": age_last_year + 1,
-                "phones": [
-                    "+44 1234567",
-                    "+44 2345678"
-                ]
-            }
-        );
-        println!("{}", john);
-        println!("{}", john["age"]);
-        println!("first phone number: {}", john["phones"][0]);
-        // Convert to a string of JSON and print it out
-        println!("{}", john.to_string());
+	let full_name = "John Doe";
+	let age_last_year = 42;
+	// The type of `john` is `serde_json::Value`
+	let john = json!(
+	    {
+	    "name": full_name,
+	    "age": age_last_year + 1,
+	    "phones": [
+	    "+44 1234567",
+	    "+44 2345678"
+	    ]
+	    }
+	);
+	println!("{}", john);
+	println!("{}", john["age"]);
+	println!("first phone number: {}", john["phones"][0]);
+	// Convert to a string of JSON and print it out
+	println!("{}", john.to_string());
     }
 
     // Operating on untyped JSON values
@@ -78,58 +78,57 @@ mod tests {
 
     #[test]
     fn untyped_example() -> Result<()> {
-        // Some JSON input data as a &str. Maybe this comes from the user.
-        let data = r#"
-            {
-                "name": "John Doe",
-                "age": 43,
-                "phones": [
-                    "+44 1234567",
-                    "+44 2345678"
-                ]
-            }"#;
+	// Some JSON input data as a &str. Maybe this comes from the user.
+	let data = r#"
+	    {
+		"name": "John Doe",
+		"age": 43,
+		"phones": [
+		    "+44 1234567",
+		    "+44 2345678"
+		]
+	    }"#;
 
-        // Parse the string of data into serde_json::Value.
-        let v: Value = serde_json::from_str(data)?;
+	// Parse the string of data into serde_json::Value.
+	let v: Value = serde_json::from_str(data)?;
 
-        // Access parts of the data by indexing with square brackets.
-        println!("Please call {} at the number {}", v["name"], v["phones"][0]);
+	// Access parts of the data by indexing with square brackets.
+	println!("Please call {} at the number {}", v["name"], v["phones"][0]);
 
-        Ok(())
+	Ok(())
     }
 
     // Parsing JSON as strongly typed data structures
     // Serde provides a powerful way of mapping JSON data into Rust data structures largely automatically.
     use serde::{Deserialize, Serialize};
-    
 
     #[derive(Serialize, Deserialize)]
     struct Person {
-        name: String,
-        age: u8,
-        phones: Vec<String>,
+	name: String,
+	age: u8,
+	phones: Vec<String>,
     }
 
     #[test]
     fn typed_example() -> Result<()> {
-        // Some JSON input data as a &str. Maybe this comes from the user.
-        let data = r#"
-            {
-                "name": "John Doe",
-                "age": 43,
-                "phones": [
-                    "+44 1234567",
-                    "+44 2345678"
-                ]
-            }"#;
+	// Some JSON input data as a &str. Maybe this comes from the user.
+	let data = r#"
+	    {
+		"name": "John Doe",
+		"age": 43,
+		"phones": [
+		    "+44 1234567",
+		    "+44 2345678"
+		]
+	    }"#;
 
-        // Parse the string of data into a Person object. This is exactly the
-        // same function as the one that produced serde_json::Value above, but
-        // now we are asking it for a Person as output.
-        let p: Person = serde_json::from_str(data)?;
+	// Parse the string of data into a Person object. This is exactly the
+	// same function as the one that produced serde_json::Value above, but
+	// now we are asking it for a Person as output.
+	let p: Person = serde_json::from_str(data)?;
 
-        // Do things just like with any other Rust data structure.
-        println!("Please call {} at the number {}", p.name, p.phones[0]);
-        Ok(())
+	// Do things just like with any other Rust data structure.
+	println!("Please call {} at the number {}", p.name, p.phones[0]);
+	Ok(())
     }
 }

@@ -14,5 +14,9 @@ members = [
     "args_parse",
     "read",
     "rust_file_study",
-    "ascii", "rc",
+    "ascii",
+    "rc",
+    "polars-demo",
 ]
+
+resolver = "2"

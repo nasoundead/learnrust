@@ -8,5 +8,4 @@ fn main() {
 
     println!("{}", pattern);
     println!("{}", path);
-    
 }
