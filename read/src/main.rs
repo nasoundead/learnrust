@@ -1,3 +1,4 @@
 fn main() {
-    println!("Hello, world!");
+    let s = "hello, wanghaibo";
+    println!("{:?}", reverse_string(s));
 }
