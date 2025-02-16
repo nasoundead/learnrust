@@ -1,31 +1,36 @@
 use polars::prelude::*;
-use polars_excel_writer::ExcelWriter;
+use polars_excel_writer::PolarsXlsxWriter;
+// use rust_xlsxwriter::{Table, TableStyle};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // 创建第一个示例 DataFrame
-    let df1 = df!(
-        "col1" => &[1, 2, 3],
-        "col2" => &["a", "b", "c"]
+    let df: DataFrame = df!(
+        "String" => &["North", "South", "East", "West"],
+        "Int" => &[1, 2, 3, 4],
+        "Float" => &[1.0, 2.22, 3.333, 4.4444],
     )?;
 
     // 创建第二个示例 DataFrame
-    let df2 = df!(
+    let df2: DataFrame = df!(
         "col3" => &[4, 5, 6],
         "col4" => &["d", "e", "f"]
     )?;
 
-    // 创建一个 ExcelWriter 实例
-    let mut writer = ExcelWriter::new("output.xlsx");
+    // 打开文件以进行写入操作
+    let mut xlsx_writer = PolarsXlsxWriter::new();
 
-    // 将第一个 DataFrame 写入名为 "Sheet1" 的工作表
-    writer = writer.with_dataframe(&df1, "Sheet1")?;
+    // let table = Table::new().set_style(TableStyle::Medium4);
 
-    // 将第二个 DataFrame 写入名为 "Sheet2" 的工作表
-    writer = writer.with_dataframe(&df2, "Sheet2")?;
+    // xlsx_writer.set_table(&table);
 
-    // 完成写入操作
-    writer.finish()?;
+    xlsx_writer.set_worksheet_name("Polars Data1")?;
+    xlsx_writer.write_dataframe(&df)?;
 
-    println!("Data saved to output.xlsx");
+    xlsx_writer.add_worksheet();
+    xlsx_writer.set_worksheet_name("Polars Data2")?;
+    xlsx_writer.write_dataframe(&df2)?;
+
+    xlsx_writer.save("dataframe.xlsx")?;
+
+    println!("Data saved to dataframe.xlsx");
     Ok(())
 }
