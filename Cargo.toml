@@ -16,7 +16,7 @@ members = [
     "rust_file_study",
     "ascii",
     "rc",
-    "polars-demo",
+    "polars-demo", "regex_demo",
 ]
 
 resolver = "2"
